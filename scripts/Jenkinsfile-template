@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    tools { nodejs "NodeJS" }
+    stages {
+        stage('Install Newman') {
+            steps {
+                sh 'npm install -g newman'
+            }
+        }
+        stage('Run API Tests') {
+            steps {
+                sh '''
+                    newman run collection.postman_collection.json \
+                    -e environment.postman_environment.json \
+                    --reporters cli,junit \
+                    --reporter-junit-export results.xml
+                '''
+            }
+        }
+        stage('Publish Results') {
+            steps {
+                junit 'results.xml'
+            }
+        }
+    }
+}

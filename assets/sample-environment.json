@@ -1,0 +1,17 @@
+{
+  "id": "sample-env-id",
+  "name": "Sample Environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://api.example.com",
+      "enabled": true
+    },
+    {
+      "key": "api_key",
+      "value": "your_api_key_here",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}
